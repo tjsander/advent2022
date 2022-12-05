@@ -13,6 +13,7 @@ def main():
     input_file = open(INPUT, 'r')
     Lines = input_file.readlines()
     score = 0
+    score2 = 0
 
     for line in Lines:
         # print (line[0])
@@ -52,8 +53,34 @@ def main():
         elif (me == "Z"):
             score += 3
 
-    print (score)
 
+        if (me == "X"):
+            score2 += 0
+            if (you == "A"):
+                score2 += 3
+            elif (you == "B"):
+                score2 += 1
+            elif (you == "C"):
+                score2 += 2
+        elif (me == "Y"):
+            score2 += 3
+            if (you == "A"):
+                score2 += 1
+            elif (you == "B"):
+                score2 += 2
+            elif (you == "C"):
+                score2 += 3
+        elif (me == "Z"):
+            score2 += 6
+            if (you == "A"):
+                score2 += 2
+            elif (you == "B"):
+                score2 += 3
+            elif (you == "C"):
+                score2 += 1
+
+    print (score)
+    print (score2)
 
 if __name__ == '__main__':
     main()
