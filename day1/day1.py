@@ -10,13 +10,17 @@ def main():
     elves.append(0)
     for line in Lines:
         if (line == "\n"):
-            # print ("ELF!" + str(count))
             elves.append(0)
             count += 1
         else:
             elves[count] += int(line)
     print (max(elves))
 
+    elves.sort(reverse=True)
+    print (elves[0])
+    print (elves[1])
+    print (elves[2])
+    print (elves[0] + elves[1] +elves[2])
 
 if __name__ == '__main__':
     main()
