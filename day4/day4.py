@@ -19,6 +19,17 @@ def main():
 
     print (score)
 
+    score = len(Lines)
+    for line in Lines:
+        out = line.strip().split(',')
+        ass1 = out[0].split('-')
+        ass2 = out[1].split('-')
+        if (int(ass1[0]) > int(ass2[1]) or int(ass2[0]) > int(ass1[1])):
+            score-=1
+        elif (int(ass2[1]) < int(ass1[0]) or int(ass2[1]) < int(ass1[0])):
+            score-=1
+    print (score)
+
 
 if __name__ == '__main__':
     main()
