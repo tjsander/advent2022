@@ -8,7 +8,8 @@ def main():
     instructions = parse_instructions(INPUT)
     print (stacks)
     # print (instructions)
-    processed_stacks = process(stacks, instructions)
+    # processed_stacks = process(stacks, instructions)
+    processed_stacks = process_9001(stacks, instructions)
     print (processed_stacks)
     
     string = ''
@@ -23,6 +24,18 @@ def process(stacks, instructions):
             start = int(line[1]) - 1
             end = int(line[2]) - 1
             stacks[end].append(stacks[start].pop())
+    return stacks
+
+def process_9001(stacks, instructions):
+    for line in instructions:
+        move_me = int(line[0])+1
+        start = int(line[1]) - 1
+        end = int(line[2]) - 1
+        newstack = []
+        for i in range (1, move_me):
+            newstack.append(stacks[start].pop())
+        for i in range (1, move_me):
+            stacks[end].append(newstack.pop())
     return stacks
 
 def parse_instructions(input_file):
