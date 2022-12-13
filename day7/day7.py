@@ -21,8 +21,8 @@ def main():
     print (dirs)
     list = dirs.flatten()
     print (list)
-    # free_space(list)
-    total_sizes(list)
+    free_space(list)
+    # total_sizes(list)
     
 def total_sizes(list):
     total = 0
@@ -31,6 +31,31 @@ def total_sizes(list):
         if (size <= 100000):
             total += size
     print (f"Puzzle anser is {total}")
+    
+def free_space(list):
+    disk_size = 70000000
+    print(f"Disk size    = {disk_size}")
+    list.sort()
+    space_used = list.pop()
+    print(f"Space used   = {space_used}")
+    space_left = disk_size - space_used
+    print(f"Space left   = {space_left}")
+
+    needed_space = 30000000
+    print(f"Update space needed = {needed_space}")
+
+    needed_space -= space_left
+    print(f"Update space 2free  = {needed_space}")
+    
+    
+
+    print (list)
+    for size in list:
+        if size > needed_space:
+            print (size)
+            break
+    2143088
+    2042410
     
 def flatten_sizes(Dirs):
     size_list = []
