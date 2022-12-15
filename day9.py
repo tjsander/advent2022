@@ -2,7 +2,8 @@
 import numpy as np
 
 # INPUT = 'input/day9example.txt'
-INPUT = 'input/day9input.txt'
+INPUT = 'input/day9example2.txt'
+# INPUT = 'input/day9input.txt'
 
 def parse_instructions(Lines):
     directions = []
@@ -12,7 +13,6 @@ def parse_instructions(Lines):
         steps = int(ln[1])
         # print (f"Dir={direction} moving [{steps}] spaces")
         directions.append((direction, steps))
-    
     visited = [(0,0)]
     head = (0,0)
     tail = (0,0)
@@ -22,6 +22,28 @@ def parse_instructions(Lines):
             head = head_one(head,direction[0])
             tail = tail_one(head,old_head,tail)
             visited.append(tail)
+    print (visited)
+    print (len(set(visited)))
+    
+def parse_instructions2(Lines):
+    directions = []
+    for line in Lines:
+        ln = line.strip().split(" ")
+        direction = ln[0]
+        steps = int(ln[1])
+        # print (f"Dir={direction} moving [{steps}] spaces")
+        directions.append((direction, steps))
+    visited = [(0,0)]
+    rope = [(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+    # head = (0,0)
+    # tail = (0,0)
+    for direction in directions:
+        for i in range (0, direction[1]):
+            old_rope = rope
+            rope[0] = head_one(rope[0],direction[0])
+            for i in range (1,10):
+                rope[i] = tail_one(rope[i-1],old_rope[i-1],rope[i])
+            visited.append(rope[9])
     print (visited)
     print (len(set(visited)))
 
@@ -59,9 +81,8 @@ def main():
     score = 0
     score2 = 0
 
-    parse_instructions((Lines))
-    # for line in Lines:
-    #     print (line)
+    # parse_instructions((Lines))
+    parse_instructions2((Lines))
 
 
 if __name__ == '__main__':
