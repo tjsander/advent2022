@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
+from math import trunc
 
 # INPUT = 'input/day9example.txt'
 INPUT = 'input/day9example2.txt'
@@ -66,7 +67,24 @@ def tail_one(head, old_head, tail):
     if (within_one(head, tail)):
         return tail
     else:
-        return old_head
+        diff1 = head[0] - tail[0]
+        diff2 = head[1] - tail[1]
+        # return old_head
+        if (abs(diff1)>1 or abs(diff2)>1):
+            return old_head
+        else:
+            x = 1
+            y = 1
+            if (diff1 < 0):
+                x = -1
+            if (diff2 < 0):
+                y = -1
+            return (tail[0] + x, tail[1] + y)
+            # return (tail[0] + trunc(diff1/2), tail[1] +trunc(diff2/2))
+        # if (abs(diff1) > 1 and abs(diff2) > 1):
+        #     return (tail[0] + diff1/2, tail[1] + diff2/2)
+        # else:
+        #     return (tail[0] + diff1/2, tail[1] + diff2/2)
     return -1
 
 def within_one(head,tail):
